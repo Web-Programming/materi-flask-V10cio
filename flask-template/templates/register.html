@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% block content %}
+<h2>Registrasi Calon Mahasiswa</h2>
+
+<!-- Pesan konfirmasi -->
+{% if confirmation_message %}
+<div class="alert alert-success" role="alert">{{ confirmation_message }}</div>
+
+<div class="row mt-3">
+    <div class="col-lg-2">
+        {% if foto %}
+        <img src="{{ url_for('static', filename=foto) }}" alt="Foto" class="img-thumbnail" width="150" />
+        {% endif %}
+    </div>
+    <div class="col-lg-10">
+        <p><strong>Nama:</strong> {{ nama }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Nomor HP:</strong> {{ hp }}</p>
+        <p><strong>Program Studi:</strong> {{ prodi }}</p>
+    </div>
+</div>
+{% endif %}
+
+<!-- Form Registrasi -->
+<form action="/register" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" class="form-control" id="nama" name="nama" required />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+        <label for="hp">Nomor HP</label>
+        <input type="text" class="form-control" id="hp" name="hp" required />
+    </div>
+    <div class="form-group">
+        <label for="prodi">Program Studi</label>
+        <select class="form-control" id="prodi" name="prodi" required>
+            <option value="">Pilih Program Studi</option>
+            <option value="IF">Informatika</option>
+            <option value="SI">Sistem Informasi</option>
+            <option value="TE">Teknik Elektro</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="foto">Upload Foto</label>
+        <input type="file" class="form-control" id="foto" name="foto" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary">Daftar</button>
+</form>
+{% endblock %}
