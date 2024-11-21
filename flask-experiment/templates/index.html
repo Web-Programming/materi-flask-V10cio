@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likely Colors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="container my-5">
+    <h1 class="text-center">Likely Colors</h1>
+    <h3 class="text-center">Choose what you want to see !</h3>
+    <form id="imageForm" enctype="multipart/form-data" class="text-center mt-4">
+        <input type="file" id="image" name="image" accept="image/*" class="form-control mb-3">
+        <button type="submit" class="btn btn-primary">Process Image</button>
+    </form>
+    <div id="result" class="text-center mt-4"></div>
+    <script>
+        const imageForm = document.getElementById('imageForm');
+        imageForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('image', document.getElementById('image').files[0]);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const resultDiv = document.getElementById('result');
+            if (response.ok) {
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <p>Dominant Color (RGB): ${data.dominant_color.join(', ')}</p>
+                    <p>Hex Code: <strong style="color: ${data.hex_code}">${data.hex_code}</strong></p>
+                    <div style="width:100px; height:100px; background-color:${data.hex_code}; margin:auto;"></div>
+                `;
+            } else {
+                const error = await response.json();
+                resultDiv.innerHTML = `<p class="text-danger">Error: ${error.error}</p>`;
+            }
+        };
+    </script>
+</body>
+</html>

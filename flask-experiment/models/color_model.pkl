@@ -1,0 +1,9 @@
+import joblib
+
+# Load the trained model
+model = joblib.load('color_model.pkl')
+
+# Example usage
+rgb_input = [[255, 0, 0]]  # Example RGB input
+predicted_hex = model.predict(rgb_input)
+print(f"Predicted Hex Code: {predicted_hex[0]}")
