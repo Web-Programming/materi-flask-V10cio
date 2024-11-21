@@ -4,6 +4,13 @@ import joblib
 model = joblib.load('color_model.pkl')
 
 # Example usage
-rgb_input = [[255, 0, 0]]  # Example RGB input
+rgb_input = [[255, 0, 0]]  # Example RGB input (Red color)
+
+# Predict the hex code
 predicted_hex = model.predict(rgb_input)
-print(f"Predicted Hex Code: {predicted_hex[0]}")
+
+# Ensure the prediction is in the correct format (strip any extra whitespace or formatting)
+predicted_hex_code = predicted_hex[0].strip()  # If it's a string with extra spaces, strip it
+
+# Output the result
+print(f"Predicted Hex Code: {predicted_hex_code}")

@@ -1,0 +1,154 @@
+/* Custom lively styles for the Likely Colors page */
+
+/* Body and general page styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ecf0f1;  /* Lighter background for a more cheerful feel */
+    color: #2c3e50;  /* Darker text color for better readability */
+    padding: 20px 0;
+    transition: background-color 0.3s ease;  /* Smooth transition for background color */
+}
+
+/* Header styling */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #3498db;  /* Bright blue to grab attention */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  /* Subtle shadow for a pop effect */
+    animation: fadeIn 1s ease-in-out;
+}
+
+h3 {
+    font-size: 1.7rem;
+    color: #95a5a6;  /* Light gray for a modern feel */
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Adding an animation for the fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Form styling */
+#imageForm {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  /* Soft shadow for form */
+    transition: transform 0.3s ease-in-out;  /* Smooth transition when hovering */
+}
+
+#imageForm:hover {
+    transform: scale(1.05);  /* Slight zoom-in effect on hover */
+}
+
+#image {
+    max-width: 100%;
+    border: 2px solid #3498db;  /* Blue border for a vibrant touch */
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ecf0f1;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, transform 0.3s ease; /* Smooth border transition */
+}
+
+#image:focus {
+    border-color: #2ecc71;  /* Green border when focused */
+    transform: scale(1.02);  /* Slight zoom effect when the input is focused */
+}
+
+/* Button styling */
+button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth hover effect */
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); /* Button shadow */
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-5px);  /* Slight lift effect on hover */
+}
+
+button:active {
+    transform: translateY(0);  /* Button returns to normal when clicked */
+}
+
+/* Result section */
+#result {
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Display dominant color block */
+#result div {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+#result div:hover {
+    transform: scale(1.1);  /* Zoom effect when hovering over the color preview */
+}
+
+/* Error message styling */
+.text-danger {
+    color: #e74c3c;  /* Bright red for errors */
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 15px;
+    text-transform: uppercase;  /* Uppercase error messages for impact */
+    animation: shake 0.5s ease-in-out;  /* Shake animation for emphasis */
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.3rem;  /* Slightly smaller heading on smaller screens */
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    #imageForm {
+        width: 90%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
